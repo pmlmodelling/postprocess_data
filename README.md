@@ -60,6 +60,8 @@ var1a+var1b = mapped_var1
 var2 = mapped_var2
 ```
 
+Additional config example files can be found in the `config` folder.
+
 ### Running the Processor
 
 To run the processor, execute `main.py` with the path to your configuration file:

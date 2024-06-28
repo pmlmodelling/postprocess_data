@@ -29,6 +29,7 @@ class OptionsReader:
         self.config.optionxform = lambda option: option  # preserve case for letters
         self.config.read(config_file)
 
+        self.model_type = self.config.get('PARAMS', 'model_type')
         self.model_path = self.config.get('PARAMS', 'model_path')
         self.output_path = self.config.get('PARAMS', 'output_path')
         self.mask_path = self.config.get('PARAMS', 'mask_path')

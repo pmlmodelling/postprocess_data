@@ -1,0 +1,5 @@
+[project]
+name = "Postprocess data"
+dynamic = ["version"]
+authors = [{ name = "Michael Wathen" }]
+readme = "README.md"

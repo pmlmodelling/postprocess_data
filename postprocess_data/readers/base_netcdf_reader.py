@@ -12,7 +12,7 @@ class BaseNetCDFProcessor:
     The base class to process NetCDF files for physical and biological variables.
 
     Attributes:
-    options (object): Configuration options for processing files.
+        options (object): Configuration options for processing files.
     """
 
     def __init__(self, options):
@@ -20,7 +20,7 @@ class BaseNetCDFProcessor:
         Initialize the NetCDFProcessor with the given options.
 
         Parameters:
-        options (object): Configuration options for processing files.
+            options (object): Configuration options for processing files.
         """
         self.options = options
 
@@ -37,11 +37,11 @@ class BaseNetCDFProcessor:
         Get files matching the pattern from the base path.
 
         Parameters:
-        base_path (str): The base path to search for files.
-        pattern (str): The pattern to match files.
+            base_path (str): The base path to search for files.
+            pattern (str): The pattern to match files.
 
         Returns:
-        list: A list of files matching the pattern.
+            list: A list of files matching the pattern.
         """
         files = glob.glob(os.path.join(base_path, "**", pattern), recursive=True)
         return files
@@ -51,11 +51,11 @@ class BaseNetCDFProcessor:
         Process the surface dataset for the given variable type.
 
         Parameters:
-        ds (Dataset): The input dataset.
-        var_type (str): The variable type ('phys_vars' or 'bio_vars').
+            ds (Dataset): The input dataset.
+            var_type (str): The variable type ('phys_vars' or 'bio_vars').
 
         Returns:
-        Dataset: The processed surface dataset.
+            Dataset: The processed surface dataset.
         """
         vars_dict = self.options.surface_vars[f'{var_type}']
         return self._create_dataset(ds, vars_dict, suffix='_surface')
@@ -65,11 +65,11 @@ class BaseNetCDFProcessor:
         Process the bottom dataset for the given variable type.
 
         Parameters:
-        ds (Dataset): The input dataset.
-        var_type (str): The variable type ('phys_vars' or 'bio_vars').
+            ds (Dataset): The input dataset.
+            var_type (str): The variable type ('phys_vars' or 'bio_vars').
 
         Returns:
-        Dataset: The processed bottom dataset.
+            Dataset: The processed bottom dataset.
         """
         vars_dict = self.options.bottom_vars[f'{var_type}']
         return self._create_dataset(ds, vars_dict, suffix='_bottom')
@@ -79,11 +79,11 @@ class BaseNetCDFProcessor:
         Process the integrated dataset for the given variable type.
 
         Parameters:
-        ds (Dataset): The input dataset.
-        var_type (str): The variable type ('phys_vars' or 'bio_vars').
+            ds (Dataset): The input dataset.
+            var_type (str): The variable type ('phys_vars' or 'bio_vars').
 
         Returns:
-        Dataset: The processed integrated dataset.
+            Dataset: The processed integrated dataset.
         """
         vars_dict = self.options.integrated_vars[f'{var_type}']
         return self._create_dataset(ds, vars_dict, suffix='_integrated')
@@ -93,12 +93,12 @@ class BaseNetCDFProcessor:
         Create a dataset with the specified variables and suffix.
 
         Parameters:
-        ds (Dataset): The input dataset.
-        vars_dict (dict): Dictionary of variables to process.
-        suffix (str): Suffix to append to variable names.
+            ds (Dataset): The input dataset.
+            vars_dict (dict): Dictionary of variables to process.
+            suffix (str): Suffix to append to variable names.
 
         Returns:
-        Dataset: The created dataset with processed variables.
+            Dataset: The created dataset with processed variables.
         """
         new_vars = {}
         for var in vars_dict:
@@ -121,13 +121,13 @@ class BaseNetCDFProcessor:
         Process a single variable from the dataset.
 
         Parameters:
-        ds (Dataset): The input dataset.
-        var (str): The variable name to process.
-        suffix (str): Suffix to append to the variable name.
+            ds (Dataset): The input dataset.
+            var (str): The variable name to process.
+            suffix (str): Suffix to append to the variable name.
 
         Returns:
-        DataArray: The processed variable.
-        str: The units of the processed variable.
+            DataArray: The processed variable.
+            str: The units of the processed variable.
         """
         raise NotImplementedError
 
@@ -136,10 +136,10 @@ class BaseNetCDFProcessor:
         Interpolate the dataset over time.
 
         Parameters:
-        ds (Dataset): The input dataset.
+            ds (Dataset): The input dataset.
 
         Returns:
-        Dataset: The interpolated dataset.
+            Dataset: The interpolated dataset.
         """
         if ds:
             if self.options.time_unit == 'month':
@@ -153,10 +153,10 @@ class BaseNetCDFProcessor:
         Combine multiple datasets into one.
 
         Parameters:
-        datasets (list): List of datasets to combine.
+            datasets (list): List of datasets to combine.
 
         Returns:
-        Dataset: The combined dataset.
+            Dataset: The combined dataset.
         """
         try:
             datasets = [d for d in datasets if d]
@@ -174,9 +174,9 @@ class BaseNetCDFProcessor:
         Save the output datasets based on the save_option.
 
         Parameters:
-        combined_surface_ds (dict): Combined surface datasets.
-        combined_bottom_ds (dict): Combined bottom datasets.
-        combined_integrated_ds (dict): Combined integrated datasets.
+            combined_surface_ds (dict): Combined surface datasets.
+            combined_bottom_ds (dict): Combined bottom datasets.
+            combined_integrated_ds (dict): Combined integrated datasets.
         """
         save_option = self.options.save_option
         print(f"Saving output using option: {save_option}")
@@ -189,9 +189,9 @@ class BaseNetCDFProcessor:
         Save datasets yearly.
 
         Parameters:
-        combined_surface_ds (dict): Combined surface datasets.
-        combined_bottom_ds (dict): Combined bottom datasets.
-        combined_integrated_ds (dict): Combined integrated datasets.
+            combined_surface_ds (dict): Combined surface datasets.
+            combined_bottom_ds (dict): Combined bottom datasets.
+            combined_integrated_ds (dict): Combined integrated datasets.
         """
         print("Saving datasets yearly.")
         years = list(combined_surface_ds['phys'].groupby('time.year').groups.keys())
@@ -213,9 +213,9 @@ class BaseNetCDFProcessor:
         Save datasets by variable.
 
         Parameters:
-        combined_surface_ds (dict): Combined surface datasets.
-        combined_bottom_ds (dict): Combined bottom datasets.
-        combined_integrated_ds (dict): Combined integrated datasets.
+            combined_surface_ds (dict): Combined surface datasets.
+            combined_bottom_ds (dict): Combined bottom datasets.
+            combined_integrated_ds (dict): Combined integrated datasets.
         """
         print("Saving datasets by variable.")
         for var_type in ['phys', 'bio']:
@@ -231,9 +231,9 @@ class BaseNetCDFProcessor:
         Save datasets by variable type.
 
         Parameters:
-        combined_surface_ds (dict): Combined surface datasets.
-        combined_bottom_ds (dict): Combined bottom datasets.
-        combined_integrated_ds (dict): Combined integrated datasets.
+            combined_surface_ds (dict): Combined surface datasets.
+            combined_bottom_ds (dict): Combined bottom datasets.
+            combined_integrated_ds (dict): Combined integrated datasets.
         """
         print("Saving datasets by variable type.")
         for var_type in ['phys', 'bio']:
@@ -246,9 +246,9 @@ class BaseNetCDFProcessor:
         Save datasets by physical and biological types.
 
         Parameters:
-        combined_surface_ds (dict): Combined surface datasets.
-        combined_bottom_ds (dict): Combined bottom datasets.
-        combined_integrated_ds (dict): Combined integrated datasets.
+            combined_surface_ds (dict): Combined surface datasets.
+            combined_bottom_ds (dict): Combined bottom datasets.
+            combined_integrated_ds (dict): Combined integrated datasets.
         """
         print("Saving datasets by physical and biological types.")
         for var_type in ['phys', 'bio']:
@@ -263,9 +263,9 @@ class BaseNetCDFProcessor:
         Save all datasets into one file.
 
         Parameters:
-        combined_surface_ds (dict): Combined surface datasets.
-        combined_bottom_ds (dict): Combined bottom datasets.
-        combined_integrated_ds (dict): Combined integrated datasets.
+            combined_surface_ds (dict): Combined surface datasets.
+            combined_bottom_ds (dict): Combined bottom datasets.
+            combined_integrated_ds (dict): Combined integrated datasets.
         """
         print("Saving all datasets into one file.")
         combined_ds = xr.Dataset()
@@ -280,8 +280,8 @@ class BaseNetCDFProcessor:
         Save a dataset to a NetCDF file.
 
         Parameters:
-        ds (Dataset): The dataset to save.
-        filename (str): The filename to save the dataset as.
+            ds (Dataset): The dataset to save.
+            filename (str): The filename to save the dataset as.
         """
         if len(ds.time_counter) > 0:
             print(f"Saving dataset to file: {filename}")

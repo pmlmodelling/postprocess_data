@@ -14,7 +14,7 @@ Welcome to postprocess data documentation
    :caption: Contents:
    
    Installation <install.md>
-   Running the processor <user.md>
    Config file <config_file.md>
+   Running the processor <user.md>
    Module Index <api/modules.rst>
 

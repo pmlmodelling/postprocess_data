@@ -4,7 +4,8 @@ import zipfile
 import shutil
 import os
 
-from options_reader import OptionsReader
+#from .options_reader import OptionsReader
+from postprocess_data.options.options_reader import OptionsReader
 
 def main():
     """
@@ -25,7 +26,7 @@ def main():
     options_reader = OptionsReader(args.config_file)
 
     # Initialize the NetCDFProcessor with the options
-    module_name = f'netcdf_reader_{options_reader.model_type}'
+    module_name = f'{options_reader.model_type}_netcdf_reader'
     module = import_module(module_name, __package__)
     NetCDFProcessor = getattr(module,
             f"{options_reader.model_type.upper()}NetCDFProcessor")

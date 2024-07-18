@@ -5,14 +5,14 @@ import glob
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
-from netcdf_reader import BaseNetCDFProcessor
+from postprocess_data.readers.base_netcdf_reader import BaseNetCDFProcessor
 
 class NEMONetCDFProcessor(BaseNetCDFProcessor):
     """
     A class to process NEMO NetCDF files for physical and biological variables.
 
     Attributes:
-    options (object): Configuration options for processing files.
+        options (object): Configuration options for processing files.
     """
 
     def __init__(self, options):
@@ -20,7 +20,7 @@ class NEMONetCDFProcessor(BaseNetCDFProcessor):
         Initialize the NetCDFProcessor with the given options.
 
         Parameters:
-        options (object): Configuration options for processing files.
+            options (object): Configuration options for processing files.
         """
         super().__init__(options)
 
@@ -108,10 +108,10 @@ class NEMONetCDFProcessor(BaseNetCDFProcessor):
         Generate a mask for the given variable type.
 
         Parameters:
-        var_type (str): The variable type ('bottom' or 'integrated').
+            var_type (str): The variable type ('bottom' or 'integrated').
 
         Returns:
-        DataArray: The generated mask.
+            DataArray: The generated mask.
         """
         grd = xr.open_dataset(self.options.mask_path)
         grd = grd.rename_dims({'z': 'deptht'})
@@ -123,13 +123,13 @@ class NEMONetCDFProcessor(BaseNetCDFProcessor):
         Process a single variable from the dataset.
 
         Parameters:
-        ds (Dataset): The input dataset.
-        var (str): The variable name to process.
-        suffix (str): Suffix to append to the variable name.
+            ds (Dataset): The input dataset.
+            var (str): The variable name to process.
+            suffix (str): Suffix to append to the variable name.
 
         Returns:
-        DataArray: The processed variable.
-        str: The units of the processed variable.
+            DataArray: The processed variable.
+            str: The units of the processed variable.
         """
         if '+' in var:
             components = var.split('+')

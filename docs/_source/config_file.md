@@ -4,6 +4,9 @@ The configuration file should contain sections for parameters, surface variables
 
 ```
 [PARAMS]
+
+# model_type: 
+model_type = nemo
 model_path = /path/to/model/files
 output_path = /path/to/output/files
 mask_path = /path/to/mask/file

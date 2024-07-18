@@ -5,17 +5,18 @@ class OptionsReader:
     A class to read and store configuration options from an INI file.
 
     Attributes:
-    model_path (str): Path to the model files.
-    output_path (str): Path to save the output files.
-    mask_path (str): Path to the mask file.
-    phys_files (list): List of physical file patterns.
-    bio_files (list): List of biological file patterns.
-    time_unit (str): Time unit for interpolation ('month' or 'day').
-    save_option (str): Option for saving the processed data.
-    surface_vars (dict): Variables for surface data.
-    integrated_vars (dict): Variables for integrated data.
-    bottom_vars (dict): Variables for bottom data.
-    mapping (dict): Mapping of variable names.
+        model_type (str): Type of model run (NEMO/FVCOM).
+        model_path (str): Path to the model files.
+        output_path (str): Path to save the output files.
+        mask_path (str): Path to the mask file.
+        phys_files (list): List of physical file patterns.
+        bio_files (list): List of biological file patterns.
+        time_unit (str): Time unit for interpolation ('month' or 'day').
+        save_option (str): Option for saving the processed data.
+        surface_vars (dict): Variables for surface data.
+        integrated_vars (dict): Variables for integrated data.
+        bottom_vars (dict): Variables for bottom data.
+        mapping (dict): Mapping of variable names.
     """
 
     def __init__(self, config_file):
@@ -23,7 +24,7 @@ class OptionsReader:
         Initialize the OptionsReader with the given configuration file.
 
         Parameters:
-        config_file (str): Path to the configuration file.
+            config_file (str): Path to the configuration file.
         """
         self.config = configparser.ConfigParser()
         self.config.optionxform = lambda option: option  # preserve case for letters
@@ -60,10 +61,10 @@ class OptionsReader:
         Get the mapped name for a variable if it exists, otherwise return the original name.
 
         Parameters:
-        var (str): The original variable name.
+            var (str): The original variable name.
 
         Returns:
-        str: The mapped variable name or the original name if no mapping exists.
+            str: The mapped variable name or the original name if no mapping exists.
         """
         return self.mapping.get(var, var)
 
@@ -72,7 +73,7 @@ class OptionsReader:
         Write the current options to a configuration file.
 
         Parameters:
-        output_file (str): Path to the output configuration file.
+            output_file (str): Path to the output configuration file.
         """
         config = configparser.ConfigParser()
         config.optionxform = lambda option: option  # preserve case for letters

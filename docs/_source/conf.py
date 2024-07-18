@@ -6,6 +6,10 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 import sys
+import os
+
+sys.path.insert(0, os.path.abspath('../../'))
+sys.path.append('../../postprocess_data')
 
 
 project = 'postprocess_data'
@@ -14,13 +18,23 @@ author = 'Michael Wathen'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
-sys.path.append('../../postprocess_data')
+
+autodoc_mock_imports = ['xarray']
 
 extensions = ['sphinxcontrib.apidoc',
-              'myst_parser']
+              'myst_parser',
+              'sphinx.ext.napoleon']
 
-apidoc_module_dir = '../../postprocess_data'
+# Napoleon settings
+napoleon_google_docstring = True
+
+
 apidoc_output_dir = 'api'
+apidoc_module_dir = '../../postprocess_data'
+apidoc_extra_args = ['-P']
+apidoc_separate_modules = True
+apidoc_module_first = True
+
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']

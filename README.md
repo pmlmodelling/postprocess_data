@@ -13,4 +13,5 @@ This project provides a tool for processing NetCDF files, allowing for the extra
 - `postprocess_data/readers`: Folder containing NetCDF readers
 - `postprocess_data/options`: Folder containing options class
 - `docs`: Folder containing documentation for project
+- `configs`: Folder containing example configuration files
 

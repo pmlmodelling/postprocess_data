@@ -15,3 +15,5 @@ documentation for details.
    :maxdepth: 2
    :caption: Contents:
 
+   Module Index <api/modules.rst>
+

@@ -1,11 +1,10 @@
 # Configuration File
 
-The configuration file should contain sections for parameters, surface variables, integrated variables, bottom variables, and mapping. Here is an example of what the configuration file might look like:
+The configuration file should contain sections for parameters, surface variables, integrated variables, bottom variables, and mapping. The options file uses `python` `configparser`, more documentation can be found [here](https://docs.python.org/3/library/configparser.html). Here is an example of what the configuration file might look like:
 
 ```
 [PARAMS]
 
-# model_type: 
 model_type = nemo
 model_path = /path/to/model/files
 output_path = /path/to/output/files
@@ -41,3 +40,12 @@ var2 = mapped_var2
 ```
 
 Additional config example files can be found in the `config` folder.
+
+
+## Option descriptions
+
+Below describe the options file section in more detail 
+
+- [PARAMS](params.md)
+- [SURFACE, INTEGRATED, BOTTOM](vars.md)
+- [MAPPING](mapping.md)

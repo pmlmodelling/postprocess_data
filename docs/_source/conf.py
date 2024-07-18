@@ -16,13 +16,15 @@ author = 'Michael Wathen'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 sys.path.append('../../postprocess_data')
 
-extensions = ['sphinxcontrib.apidoc']
+extensions = ['sphinxcontrib.apidoc',
+              'myst_parser']
 
 apidoc_module_dir = '../../postprocess_data'
 apidoc_output_dir = 'api'
 
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+#source_suffix = ['.rst', '.md']
 
 
 

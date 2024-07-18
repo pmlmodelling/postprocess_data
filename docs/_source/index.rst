@@ -3,17 +3,18 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-postprocess_data documentation
-==============================
+Welcome to postprocess data documentation
+=========================================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
+.. include:: ../../README.md
+   :parser: commonmark
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+   
+   Installation <install.md>
+   Running the processor <user.md>
+   Config file <config_file.md>
    Module Index <api/modules.rst>
 

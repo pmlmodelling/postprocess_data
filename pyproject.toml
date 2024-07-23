@@ -1,5 +1,32 @@
+[build-system]
+build-backend = 'setuptools.build_meta'
+requires = ['setuptools']
+
 [project]
-name = "Postprocess data"
+name = "postprocess-data"
 dynamic = ["version"]
 authors = [{ name = "Michael Wathen" }]
 readme = "README.md"
+dependencies = [
+    "xarray"
+]
+requires-python = ">=3.9"
+
+[project.scripts]
+postprocess_data = "postprocess_data.cli.main:main"
+
+[project.urls]
+"Homepage" = "https://github.com/pmlmodelling/postprocess_data"
+"Bug Tracker" = "https://github.com/pmlmodelling/postprocess_data/issues"
+
+[tool.setuptools]
+packages = [
+    "postprocess_data",
+    "postprocess_data.cli",
+    "postprocess_data.options",
+    "postprocess_data.readers"
+]
+#[tool.setuptools.packages.find]
+#where = ["postprocess_data"]
+#include = ["postprocess_data*"]
+

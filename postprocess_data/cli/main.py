@@ -4,7 +4,6 @@ import zipfile
 import shutil
 import os
 
-#from .options_reader import OptionsReader
 from postprocess_data.options.options_reader import OptionsReader
 
 def main():

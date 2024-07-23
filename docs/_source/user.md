@@ -2,9 +2,9 @@
 
 To use the NetCDF Processor, you need a configuration file (INI format) specifying the options for processing the files.
 
-To run the processor, execute `main.py` with the path to your configuration file:
+The package installs into a commandline application which can be run with a configuration file as follows:
 
 ```bash
-python main.py -c path/to/config/file.ini
+postprocess_data -c path/to/config/file.ini
 ```
 

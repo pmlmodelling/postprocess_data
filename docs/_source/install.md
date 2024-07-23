@@ -1,8 +1,12 @@
 # Install dependencies via Conda
 
-Create a Conda environment and install dependencies from requirements.txt:
+Create a Conda environment and install package:
 
 ```bash
-conda create --name netcdf_processor --file requirements.txt
-conda activate netcdf_processor
+cd postprocess_data
+mamba create -n postprocess python -y
+conda activate postprocess
+python -m pip install .
 ```
+
+
